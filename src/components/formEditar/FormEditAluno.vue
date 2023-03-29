@@ -39,10 +39,10 @@ const form = ref({
 });
 
 async function onAtualizar() {
-  delete form.value.id_aluno;
+  delete form.value.id_aluno; // deletar este elemento pois ele não vai ser recebido como parametro
   const alunoEditado = await api.put(`aluno/${id}`, form.value);
 
-  $q.notify({ // notify de atualizado!
+  $q.notify({ // feedback de atualizado para o usuário!
     type: "positive",
     message: "Aluno atualizado com sucesso!",
     timeout: 1000,
@@ -60,7 +60,7 @@ function onReset() {
 
 onMounted(async () => {
   const { data } = await api.get(`aluno/unico/${id}`);
-  console.log(data);
+  // console.log(data);
   form.value.nome = data.nome;
   form.value.data_nasc = data.data_nasc;
   form.value.cpf = data.cpf;
