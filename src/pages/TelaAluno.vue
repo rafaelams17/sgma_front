@@ -103,7 +103,11 @@ const columns = [
     required: true,
     label: "CPF",
     align: "center",
-    field: "cpf",
+    field: (linha) => {
+      const { cpf } = linha;
+      let cpfFormatado = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"); // expressão regular para formatar o cpf
+      return cpfFormatado;
+    },
   },
   {
     name: "acoes",

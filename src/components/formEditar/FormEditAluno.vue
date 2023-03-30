@@ -7,7 +7,8 @@
         <q-input type="text" v-model="form.nome" outlined label="Nome *" stack-label style="margin-bottom: 15px" />
 
         <q-input type="date" v-model="form.data_nasc" outlined label="Data de Nascimento *" stack-label />
-        <q-input type="text" v-model="form.cpf" outlined label="CPF *" stack-label style="margin-top: 15px" />
+        <q-input type="text" v-model="form.cpf" outlined label="CPF *" stack-label style="margin-top: 15px" mask="###.###.###-##"
+          unmasked-value/>
       </div>
 
       <!-- Botões -->

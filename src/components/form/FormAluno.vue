@@ -28,7 +28,10 @@
           stack-label
           :dense="dense"
           :rules="cpfRules"
+          mask="###.###.###-##"
+          unmasked-value
         />
+        <!-- mask é um atributo usado para formatar a entrada do dado neste caso o cpf -->
       </div>
 
       <!-- Botões -->
