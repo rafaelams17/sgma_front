@@ -47,6 +47,7 @@ async function onAtualizar() {
     type: "positive",
     message: "Aluno atualizado com sucesso!",
     timeout: 1000,
+    position: "top",
   });
   setTimeout(() => router.push("/alunos"), 1500);
 }

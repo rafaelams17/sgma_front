@@ -79,6 +79,7 @@ async function onAtualizar() {
     type: "positive",
     message: "Módulo atualizado com sucesso!",
     timeout: 1000,
+    position: "top",
   });
   setTimeout(() => router.push(`/modulos/${id_aluno}`), 1500); // "/modulos/" + id
 }

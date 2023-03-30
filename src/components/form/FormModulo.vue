@@ -106,6 +106,7 @@ async function onSubmit() { // função para cadastrar o módulo
       type: "warning",
       message: "Módulo já existe no sistema!",
       timeout: 1000,
+      position: "top",
     });
   } else { // cadastra o módulo
     if(form.value.nota1 !== null ){
@@ -125,6 +126,7 @@ async function onSubmit() { // função para cadastrar o módulo
       type: "positive",
       message: "Módulo cadastrado com sucesso!",
       timeout: 1000,
+      position: "top",
     });
 
     setTimeout(() => router.push(`/modulos/${id}`), 1500); // "/modulos/" + id, volta para a tela principal de módulo

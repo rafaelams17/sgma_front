@@ -88,6 +88,7 @@ async function submitForm() {
     $q.notify({
       type: "negative",
       message: "Usuário ou senha inválido.",
+      position: "top",
     });
   }
 }

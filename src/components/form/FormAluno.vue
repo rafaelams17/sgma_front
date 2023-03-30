@@ -89,6 +89,7 @@ async function onSubmit() {
       type: "warning",
       message: "CPF já existe no sistema!",
       timeout: 1000,
+      position: "top",
     });
   } else {
     const aluno = await api.post("/aluno", form.value);
@@ -97,6 +98,7 @@ async function onSubmit() {
       type: "positive",
       message: "Aluno cadastrado com sucesso!",
       timeout: 1000,
+      position: "top",
     });
 
     setTimeout(() => router.push("/alunos"), 1500);

@@ -144,6 +144,7 @@ async function deleteAluno(id) {
         type: "negative",
         message: "Aluno excluído com sucesso!",
         timeout: 1000,
+        position: "top",
       });
       buscaDados();
     })
