@@ -4,12 +4,12 @@
     <q-form @submit="onSubmit" @reset="onReset">
       <!-- Input -->
       <div style="width: 600px; margin: 0 auto">
-        <q-input
+        <q-select
           v-model="form.nome"
           outlined
           label="Nome do Módulo*"
+          :options="options"
           stack-label
-          :dense="dense"
           :rules="nomeRules"
         />
         <q-input
@@ -59,7 +59,7 @@
 import { useQuasar } from "quasar";
 import { useRouter, useRoute } from "vue-router";
 import { api } from "src/boot/axios";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const $q = useQuasar();
 const router = useRouter();
@@ -74,6 +74,7 @@ const form = ref({
   nota3: null,
   id_aluno: Number(id), // associa o módulo com o usuário
 });
+
 
 const nomeRules = [(nome) => (nome && nome.length > 0) || "Campo obrigatório"];
 
@@ -141,6 +142,18 @@ function onReset() {
 
   setTimeout(() => router.push(`/modulos/${id}`), 700);
 }
+
+const options = ref([]);
+
+async function optionsModulos() {
+  const modulos = await api.get("/modulo"); // rota para a api pegar os módulos cadastrados
+
+  options.value = modulos.data;
+}
+
+onMounted(async () => {
+  await optionsModulos();
+});
 </script>
 
 <style scoped>

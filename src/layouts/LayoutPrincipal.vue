@@ -20,9 +20,17 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <q-drawer
+      v-model="leftDrawerOpen"
+      show-if-above
+      bordered
+      :width="200"
+      :mini="miniState"
+      @mouseover="miniState = false"
+      @mouseout="miniState = true"
+    >
+      <q-item-section class="q-ma-md">SGMA</q-item-section>
       <q-list>
-        <!-- <p>Menu</p> -->
         <LinkEssenciais
           v-for="link in linkessenciais"
           :key="link.title"
@@ -56,6 +64,11 @@ const linksList = [
     icon: "school",
     route: "/alunos", // rota definida corretamente agora
   },
+  {
+    title: "Módulos",
+    icon: "folder",
+    route: "/modulos", // definir rota
+  },
 ];
 
 export default defineComponent({
@@ -69,6 +82,7 @@ export default defineComponent({
     const leftDrawerOpen = ref(false);
 
     return {
+      miniState: ref(true),
       linkessenciais: linksList,
       leftDrawerOpen,
       toggleLeftDrawer() {

@@ -8,7 +8,14 @@
       row-key="id"
       :filter="filter"
       :loading="loading"
-    >
+      >
+    <template v-slot:body-cell-status="props">
+        <q-td :props="props">
+          <q-badge :color="mudarCor(props.value)">
+            {{ props.row.status }}
+          </q-badge>
+        </q-td>
+      </template>
       <template v-slot:top>
         <q-btn
           color="primary"
@@ -31,11 +38,6 @@
           </template>
         </q-input>
       </template>
-
-      <template v-slot:body-cell-status="props">
-        <q-td style="text-align: center">{{ props.row.status }} </q-td>
-      </template>
-
       <template v-slot:body-cell-acoes="props">
         <q-td :props="props">
           <q-btn
@@ -153,6 +155,18 @@ async function mediaAluno() {
       rows.value[index] = { ...rows.value[index], status: "Inapto" };
     }
   });
+}
+
+function mudarCor(status) {
+  if(status == 'Apto'){
+    return 'green-14';
+  }
+  if(status == 'Inapto'){
+    return 'red-14';
+  }
+  if(status == 'Incompleto') {
+    return 'deep-purple-14'
+  }
 }
 
 function voltar() {
