@@ -1,8 +1,7 @@
 <template>
-  <q-page>
-    <!-- <q-toolbar-title>Teste Dashboard</q-toolbar-title> -->
-    <div class="dados" style="margin-left: 250px">
-      <q-card class="my-card bg-purple text-white hover">
+  <q-page class="q-ma-lg">
+    <div class="dados">
+      <q-card class="bg-purple text-white hover">
         <div class="hover">
           <q-card-section>
           <div class="text-h6">
@@ -18,7 +17,7 @@
     </div>
 
     <div class="dados">
-      <q-card class="my-card bg-amber text-white">
+      <q-card class="bg-amber text-white">
         <div class="hover">
           <q-card-section>
           <div class="text-h6">
@@ -55,9 +54,14 @@ onMounted( async() => {
 <style scoped>
 .dados {
   margin: 20px;
-  margin-top: 50px;
-  width: 500px;
+  width: 400px;
   display: inline-block;
+}
+
+@media screen and (min-width: 700px) {
+  .dados{
+    margin-left: 250px;
+  }
 }
 
 .hover:hover {

@@ -75,7 +75,6 @@ const form = ref({
   id_aluno: Number(id), // associa o módulo com o usuário
 });
 
-
 const nomeRules = [(nome) => (nome && nome.length > 0) || "Campo obrigatório"];
 
 const nota1Rules = [
@@ -143,17 +142,8 @@ function onReset() {
   setTimeout(() => router.push(`/modulos/${id}`), 700);
 }
 
-const options = ref([]);
+const options = ref(['Programming A', 'Programming B', 'Programming C', 'Programming D']);
 
-async function optionsModulos() {
-  const modulos = await api.get("/modulo"); // rota para a api pegar os módulos cadastrados
-
-  options.value = modulos.data;
-}
-
-onMounted(async () => {
-  await optionsModulos();
-});
 </script>
 
 <style scoped>

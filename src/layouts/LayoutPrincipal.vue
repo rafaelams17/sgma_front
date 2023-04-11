@@ -63,12 +63,7 @@ const linksList = [
     title: "Alunos",
     icon: "school",
     route: "/alunos", // rota definida corretamente agora
-  },
-  {
-    title: "Módulos",
-    icon: "folder",
-    route: "/modulos", // definir rota
-  },
+  }
 ];
 
 export default defineComponent({

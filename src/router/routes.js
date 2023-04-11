@@ -12,10 +12,6 @@ const routes = [
         component: () => import("pages/TelaAluno.vue"),
       },
       {
-        path: "/modulos",
-        component: () => import("pages/TelaModuloGeral.vue"),
-      },
-      {
         path: "/modulos/:id",
         component: () => import("pages/TelaModulo.vue"),
       },
@@ -26,10 +22,6 @@ const routes = [
       {
         path: "/cadastro-modulo/:id",
         component: () => import("components/form/FormModulo.vue"),
-      },
-      {
-        path: "/cadastrar-modulo",
-        component: () => import("components/form/FormModuloGeral.vue"),
       },
       {
         path: "/editar-aluno/:id",
