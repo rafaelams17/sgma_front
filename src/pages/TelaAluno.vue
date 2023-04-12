@@ -20,6 +20,7 @@
           filled
           borderless
           dense
+          style="width: 400px;"
           debounce="300"
           color="primary"
           v-model="filter"
