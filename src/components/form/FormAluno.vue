@@ -57,7 +57,8 @@ import { api } from "src/boot/axios";
 import { ref } from "vue";
 
 const $q = useQuasar();
-const router = useRouter();
+const router = useRouter(); // roteamento dos arquivos
+const dense = ref(false);
 
 const form = ref({
   nome: "",
@@ -76,7 +77,7 @@ const cpfRules = [
 ];
 
 async function onSubmit() {
-  const { data } = await api.get("/aluno");
+  const { data } = await api.get("/aluno"); // roteamento para pegar os dados na API - await - aguardar os dados do BD
   let alunoExiste = false;
 
   for (var i = 0; i < data.length; i++) {
@@ -85,14 +86,14 @@ async function onSubmit() {
     }
   }
   if (alunoExiste) {
-    $q.notify({
-      type: "warning",
-      message: "CPF já existe no sistema!",
-      timeout: 1000,
-      position: "top",
+    $q.notify({ // forma de dar um feedback interativo para o usuário
+      type: "warning", // tipo da notificação
+      message: "CPF já existe no sistema!", // mensagem para o usuário
+      timeout: 1000, // tempo que a mensagem vai ficar na tela do usuário
+      position: "top", // a posição que a mensagem vai aparacer na tela do usuário
     });
   } else {
-    const aluno = await api.post("/aluno", form.value);
+    const aluno = await api.post("/aluno", form.value); // roteamento para salvar os dados na API
 
     $q.notify({
       type: "positive",
@@ -101,16 +102,17 @@ async function onSubmit() {
       position: "top",
     });
 
-    setTimeout(() => router.push("/alunos"), 1500);
+    setTimeout(() => router.push("/alunos"), 1500); // rota para após salvar os dados ir para página de Aluno
   }
 }
 
 function onReset() {
+  // forma de limpar os inputs
   form.value.nome = "";
   form.value.data_nasc = "";
   form.value.cpf = "";
 
-  setTimeout(() => router.push("/alunos"), 700);
+  setTimeout(() => router.push("/alunos"), 700); // rota para voltar para a página de Aluno
 }
 </script>
 

@@ -95,7 +95,7 @@ function onReset() {
 
 onMounted(async () => { // puxa os dados do banco de dados para os campos de entradas
   const { data } = await api.get(`modulo/unico/${id}`); // rota para o banco
-  console.log(data);
+  // console.log(data);
   form.value = data; // outra forma de fazer o que essas linhas abaixo fazem
   // form.value.nome = data.nome;
   // form.value.nota1 = data.nota1;

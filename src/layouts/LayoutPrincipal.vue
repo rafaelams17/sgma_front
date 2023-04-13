@@ -16,7 +16,6 @@
         </q-toolbar-title>
 
         <div>Seja-bem vindo</div>
-        <!--Name não funciona ainda-->
       </q-toolbar>
     </q-header>
 

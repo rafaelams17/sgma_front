@@ -59,7 +59,7 @@
 import { useQuasar } from "quasar";
 import { useRouter, useRoute } from "vue-router";
 import { api } from "src/boot/axios";
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 
 const $q = useQuasar();
 const router = useRouter();
