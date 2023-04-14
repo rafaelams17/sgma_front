@@ -54,7 +54,7 @@
             size="sm"
             class="q-px-sm"
             icon="delete"
-            title="Deletar Aluno"
+            title="Excluir Aluno"
             color="red-8"
             @click="deleteAluno(props.row.id)"
           />
@@ -122,7 +122,7 @@ const rows = ref([]);
 
 async function buscaDados() {
   const { data } = await api.get("/aluno");
-  console.log(data);
+  // console.log(data);
   rows.value = data;
 }
 
