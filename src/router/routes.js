@@ -1,6 +1,10 @@
 const routes = [
   {
     path: "/",
+    component: () => import("pages/TelaLogin.vue"),
+  },
+  {
+    path: "/adm",
     component: () => import("layouts/LayoutPrincipal.vue"),
     children: [
       {
@@ -33,11 +37,7 @@ const routes = [
       },
     ],
   },
-  {
-    path: "/login",
-    component: () => import("pages/TelaLogin.vue"),
-  },
-
+  
   // Always leave this as last one,
   // but you can also remove it
   {

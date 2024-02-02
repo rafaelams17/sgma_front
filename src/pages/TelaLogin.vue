@@ -1,56 +1,15 @@
 <template>
-  <img src="../assets/book.jpg" class="book" alt="login-book" />
-  <div class="row col-0 col-md-6 flex content-center" style="height: 100vh">
-    <!-- Inputs -->
-    <div
-      v-bind:class="{
-        'justify-center': $q.screen.md || $q.screen.sm || $q.screen.xs,
-      }"
-      class="col-12 col-md-6 flex content-center login"
-    >
-      <q-card
-        v-bind:style="$q.screen.lt.sm ? { width: '80%' } : { width: '50%' }"
-      >
-        <q-card-section>
-          <!-- Titulo -->
-          <div class="q-pt-lg col text-h6 ellipsis flex justify-center">
-            <h2 class="text-h2 text-uppercase q-my-none text-weight-regular">
-              sgma
-            </h2>
-          </div>
-        </q-card-section>
-
-        <!-- Form -->
-        <q-form class="q-gutter-md q-px-md" @submit.prevent.stop="submitForm">
-          <q-input
-            label="Usuário:"
-            v-model="login.usuario"
-            lazy-rules
-            :rules="nameRules"
-          ></q-input>
-          <q-input
-            label="Senha:"
-            type="password"
-            v-model="login.senha"
-            lazy-rules
-            :rules="passwordRules"
-          ></q-input>
-          <!-- Botões -->
-          <div>
-            <q-btn
-              style="background: orange"
-              class="full-width"
-              label="Entrar"
-              type="submit"
-              rounded
-            >
-            </q-btn>
-            <div class="text-center q-mt-sm q-gutter-lg">
-              <router-link to="\"></router-link>
-            </div>
-          </div>
-        </q-form>
-      </q-card>
+  <div class="row">
+    <div class="col q-ma-md " >
+      <h2 class="text-uppercase text-center">Sgma</h2>
+      <q-form @submit="onSubmit" style="width: 500px; margin: 0 auto;">
+        <q-input label="Usuário:" v-model="login.usuario" lazy-rules :rules="nameRules" />
+        <q-input label="Senha:" type="password" v-model="login.senha" lazy-rules :rules="passwordRules" />
+        <q-btn class="full-width" label="Entrar" type="submit" color="orange" />
+      </q-form>
+    </div>
+    <div class="col container-img">
+      <q-img class="full-width" src="../assets/book.jpg" alt="login-book" style="height: 100vh;" />
     </div>
   </div>
 </template>
@@ -77,12 +36,15 @@ const passwordRules = [
   (password) => !!password || "Você precisa preencher os campos em vermelho",
 ];
 
-async function submitForm() {
+async function onSubmit() {
   // const { usuario, senha } = login.value; para extrair os dados do formulário
 
   const { data } = await api.get("/user");
 
-  if(login.value.usuario === data[0].usuario && login.value.senha === data[0].senha){
+  console.log("Cgeuguei aqui")
+
+
+  if (login.value.usuario === data[0].usuario && login.value.senha === data[0].senha) {
     router.push("/");
   } else {
     $q.notify({
@@ -95,17 +57,7 @@ async function submitForm() {
 </script>
 
 <style scoped>
-.book {
-  position: fixed;
-  height: 100%;
-  width: 45%;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  opacity: 0.4;
-}
-
-.login {
-  margin-left: 300px;
+.container-img {
+  opacity: 0.8;
 }
 </style>
