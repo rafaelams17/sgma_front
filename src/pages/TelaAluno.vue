@@ -65,6 +65,12 @@
 </template>
 
 <script setup>
+// Fazer esse projeto com essa estrutura
+// import { defineComponent } from 'vue'
+
+// export default defineComponent({
+//   name: 'IndexPage'
+// })
 import { ref, onMounted } from "vue";
 import { useQuasar } from "quasar";
 import { useRouter } from "vue-router";

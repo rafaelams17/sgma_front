@@ -21,19 +21,19 @@ const routes = [
       },
       {
         path: "/cadastro-aluno",
-        component: () => import("components/form/FormAluno.vue"),
+        component: () => import("components/formularios/aluno/FormAluno.vue"),
       },
       {
         path: "/cadastro-modulo/:id",
-        component: () => import("components/form/FormModulo.vue"),
+        component: () => import("components/formularios/modulo/FormModulo.vue"),
       },
       {
         path: "/editar-aluno/:id",
-        component: () => import("components/formEditar/FormEditAluno.vue"),
+        component: () => import("components/formularios/aluno/FormEditAluno.vue"),
       },
       {
         path: "/editar-modulo/:id",
-        component: () => import("components/formEditar/FormEditModulo.vue"),
+        component: () => import("components/formularios/modulo/FormEditModulo.vue"),
       },
     ],
   },
