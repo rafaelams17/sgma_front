@@ -1,27 +1,13 @@
 <template>
-  <div class="q-pa-md">
-    <p style="text-align: center">Editar Aluno</p>
-    <q-form @submit="onAtualizar" @reset="onReset">
-      <!-- Input dos dados do Aluno -->
-      <div style="width: 600px; margin: 0 auto">
-        <q-input type="text" v-model="form.nome" outlined label="Nome *" stack-label style="margin-bottom: 15px" />
-
-        <q-input type="date" v-model="form.data_nasc" outlined label="Data de Nascimento *" stack-label />
-        <q-input type="text" v-model="form.cpf" outlined label="CPF *" stack-label style="margin-top: 15px" mask="###.###.###-##"
-          unmasked-value/>
-      </div>
-
-      <!-- Botões -->
-
-      <div style="margin-top: 50px; text-align: center">
-        <q-btn label="Atualizar" type="submit" color="primary" />
-        <q-btn label="Cancelar" type="reset" color="primary" flat />
-      </div>
-    </q-form>
+  <div>
+    <h1 class="text-center text-h4">Atualizar Aluno</h1>
+    <formulario-aluno enviarBotao="Atualizar" exibirBotaoVoltar="true" />
   </div>
 </template>
 
 <script setup>
+import FormularioAluno from 'src/components/formularios/FormularioAluno.vue';
+
 import { useQuasar } from "quasar";
 import { ref, onMounted } from "vue";
 import { api } from "src/boot/axios";
@@ -68,9 +54,3 @@ onMounted(async () => {
   form.value.cpf = data.cpf;
 })
 </script>
-
-<style scoped>
-p {
-  font-size: 2em;
-}
-</style>

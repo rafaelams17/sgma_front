@@ -1,39 +1,39 @@
 const routes = [
   {
     path: "/",
-    component: () => import("pages/TelaLogin.vue"),
+    component: () => import("pages/login/PageLogin.vue"),
   },
   {
-    path: "/adm",
+    path: "/dashboard",
     component: () => import("layouts/LayoutPrincipal.vue"),
     children: [
       {
         path: "",
-        component: () => import("pages/TelaPrincipal.vue"),
+        component: () => import("pages/PageDashboard.vue"),
       },
       {
         path: "/alunos",
-        component: () => import("pages/TelaAluno.vue"),
-      },
-      {
-        path: "/modulos/:id",
-        component: () => import("pages/TelaModulo.vue"),
+        component: () => import("pages/alunos/PageAlunos.vue"),
       },
       {
         path: "/cadastro-aluno",
-        component: () => import("components/formularios/aluno/FormAluno.vue"),
-      },
-      {
-        path: "/cadastro-modulo/:id",
-        component: () => import("components/formularios/modulo/FormModulo.vue"),
+        component: () => import("pages/alunos/AdicionarAlunos.vue"),
       },
       {
         path: "/editar-aluno/:id",
-        component: () => import("components/formularios/aluno/FormEditAluno.vue"),
+        component: () => import("pages/alunos/EditarAlunos.vue"),
+      },
+      {
+        path: "/modulos/:id",
+        component: () => import("pages/modulos/PageModulos.vue"),
+      },
+      {
+        path: "/cadastro-modulo/:id",
+        component: () => import("pages/modulos/AdicionarModulos.vue"),
       },
       {
         path: "/editar-modulo/:id",
-        component: () => import("components/formularios/modulo/FormEditModulo.vue"),
+        component: () => import("pages/modulos/EditarModulos.vue"),
       },
     ],
   },
