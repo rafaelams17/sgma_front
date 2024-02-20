@@ -1,13 +1,18 @@
 <template>
   <q-form @submit="onSubmit" style="max-width: 500px; margin: 0 auto;">
-    <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
     <q-input label="Usuário:" v-model="login.usuario" lazy-rules :rules="nameRules"/>
     <q-input label="Senha:" :type="isPwd ? 'password': 'text'" v-model="login.senha" lazy-rules :rules="passwordRules" class="row">
       <template v-slot:append>
         <q-icon :name="isPwd ? 'visibility_off': 'visibility'" class="cursor-pointer " size="sm" @click="isPwd = !isPwd"/>
       </template>
     </q-input>
-    <p><a href="#">Esqueceu a senha?</a></p>
+    <div class="row justify-between">
+      <div class="row">
+        <p class="q-pr-sm">Não tem uma conta?</p>
+        <p class="style-link" @click="createAccount()">Cadastre-se</p>
+      </div>
+      <p class="style-link" @click="createAccount()">Esqueceu a senha?</p>
+    </div>
     <q-btn class="full-width" label="Entrar" type="submit" color="orange" />
   </q-form>
 </template>
@@ -56,4 +61,15 @@ async function onSubmit() {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.style-link {
+  transition: .3s;
+  color: #9c4e05;
+}
+
+.style-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 0.8;
+}
+</style>

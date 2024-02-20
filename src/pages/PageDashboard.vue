@@ -1,15 +1,17 @@
 <template>
   <q-page class="q-ma-lg">
-    <div class="row justify-evenly no-padding my-card">
-      <q-card class="col bg-purple text-white my-cards" style="max-width: 350px;" >
+    <div class="row justify-evenly no-padding my-card text-white">
+      <q-card class="col my-cards bg-cyan-8" style="max-width: 350px;" >
         <q-card-section class=" text-center text-h6" >
+          <q-icon name="school" class="absolute-left q-pa-sm" />
           <p>{{ totalAlunos }}</p>
           <p>Alunos cadastrados</p>
         </q-card-section>
       </q-card>
 
-      <q-card class="col bg-amber-7 text-white my-cards" style="max-width: 350px;">
-        <q-card-section class=" text-center text-h6">
+      <q-card class="col my-cards" style="max-width: 350px;">
+        <q-card-section class="bg-indigo-8 text-center text-h6">
+          <q-icon name="folder" class="absolute-left q-pa-sm" />
           <p>{{ totalModulos }}</p>
           <p>Módulos cadastrados</p>
         </q-card-section>

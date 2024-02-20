@@ -43,8 +43,6 @@
 <script>
 import { defineComponent, ref } from "vue";
 import LinkEssenciais from "src/components/LinkEssenciais.vue";
-import { useRoute, useRouter } from 'vue-router';
-
 
 const linksList = [
   {

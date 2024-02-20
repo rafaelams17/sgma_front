@@ -95,7 +95,6 @@ const columns = [
       let dataFormatada = data_nasc.split("-"); // cortar o dado e armazena em array
       dataFormatada = dataFormatada.reverse(); // inverte as posições do array
       dataFormatada = dataFormatada.join("/"); // inserir a barra entre as posições separadas do array
-      //console.log(dataFormatada);
       return dataFormatada;
     },
   },
@@ -121,14 +120,12 @@ const columns = [
 const rows = ref([]);
 
 async function buscaDados() {
-  const { data } = await api.get("/aluno");
-  // console.log(data);
+  const { data } = await api.get("/alunos");
+
   rows.value = data;
 }
 
 async function deleteAluno(id) {
-  // console.log("Deletando o Aluno: ", id);
-
   $q.dialog({
     title: "Tem certeza que deseja excluir esse Aluno?",
     message: "Ao confirmar essa ação, você não poderá desfazêl-a.",
@@ -139,7 +136,7 @@ async function deleteAluno(id) {
     style: "text-align: center",
   })
     .onOk(async () => {
-      const aluno = await api.delete(`/aluno/${id}`); // apaga o aluno
+      const aluno = await api.delete(`/alunos/${id}`); // apaga o aluno
 
       $q.notify({
         type: "negative",
@@ -155,7 +152,6 @@ async function deleteAluno(id) {
 }
 
 async function editAluno(id) {
-  // console.log("Editar o Aluno: ", id);
   router.push(`/editar-aluno/${id}`);
 }
 

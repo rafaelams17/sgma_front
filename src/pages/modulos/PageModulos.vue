@@ -123,7 +123,7 @@ const columns = [
 ];
 
 async function buscaDados(id) {
-  const aluno = await api.get(`/aluno/unico/${id}`); // rota para a api pegar o aluno para o módulo
+  const aluno = await api.get(`/alunos/busca-um/${id}`); // rota para a api pegar o aluno para o módulo
 
   nomeAluno.value = aluno.data.nome;
 
@@ -137,8 +137,6 @@ function addModulo() {
 }
 
 function editModulo(id) {
-  console.log("Editando o Aluno...");
-  router.push(`/editar-modulo/${id}`);
 }
 
 async function mediaAluno() {
@@ -170,7 +168,6 @@ function mudarCor(status) {
 }
 
 function voltar() {
-  //console.log("Voltar para página Módulos");
   router.push("/alunos");
 }
 
