@@ -95,5 +95,4 @@ export default defineComponent({
 #footer {
   font-size: 16px;
 }
-
 </style>

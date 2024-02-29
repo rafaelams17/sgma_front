@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col q-ma-md " >
       <h2 class="text-uppercase text-center text-weight-regular">Sgma</h2>
-      <formulario-usuario />
+      <router-view />
     </div>
     <div class="col container-img xs-hide">
-      <q-img class="full-width" src="../../assets/book.jpg" alt="login-book" style="height: 100vh;" />
+      <q-img class="full-width" src="../assets/book.jpg" alt="login-book" style="height: 100vh;" />
     </div>
   </div>
 </template>

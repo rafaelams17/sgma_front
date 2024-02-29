@@ -28,10 +28,10 @@ const totalModulos = ref(0);
 const totalAlunos = ref(0);
 
 onMounted( async() => {
-  const modulos = await api.get(`modulo/total`);
+  const modulos = await api.get(`modulos/total`);
   totalModulos.value = modulos.data;
 
-  const alunos = await api.get(`aluno/total`);
+  const alunos = await api.get(`alunos/total`);
   totalAlunos.value = alunos.data;
 })
 

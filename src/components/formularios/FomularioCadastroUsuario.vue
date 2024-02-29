@@ -1,5 +1,6 @@
 <template>
   <q-form @submit="onSubmit" style="max-width: 500px; margin: 0 auto;">
+    <p>Cadastro</p>
     <q-input label="Usuário:" v-model="login.usuario" lazy-rules :rules="nameRules"/>
     <q-input label="Senha:" :type="isPwd ? 'password': 'text'" v-model="login.senha" lazy-rules :rules="passwordRules" class="row">
       <template v-slot:append>
@@ -11,7 +12,7 @@
         <p class="q-pr-sm">Não tem uma conta?</p>
         <p class="style-link" @click="createAccount()">Cadastre-se</p>
       </div>
-      <p class="style-link" @click="forgetPassword()">Esqueceu a senha?</p>
+      <p class="style-link" @click="createAccount()">Esqueceu a senha?</p>
     </div>
     <q-btn class="full-width" label="Entrar" type="submit" color="orange" />
   </q-form>
@@ -58,14 +59,6 @@ async function onSubmit() {
       position: "top",
     });
   }
-}
-
-function createAccount() {
-  router.push("/cadastro-usuario");
-}
-
-function forgetPassword() {
-  router.push("/esqueceu-senha");
 }
 </script>
 

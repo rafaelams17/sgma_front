@@ -1,7 +1,21 @@
 const routes = [
   {
     path: "/",
-    component: () => import("pages/login/PageLogin.vue"),
+    component: () => import("layouts/LayoutLogin.vue"),
+    children: [
+      {
+        path: "", 
+        component: () => import("pages/usuarios/PageLogin.vue")
+      },
+      {
+        path: "/cadastro-usuario", 
+        component: () => import("pages/usuarios/CadastroUsuario.vue")
+      },
+      {
+        path: "/esqueceu-senha", 
+        component: () => import("pages/usuarios/EsqueceuSenhaUsuario.vue")
+      }
+    ],
   },
   {
     path: "/dashboard",
@@ -37,9 +51,6 @@ const routes = [
       },
     ],
   },
-  
-  // Always leave this as last one,
-  // but you can also remove it
   {
     path: "/:catchAll(.*)*",
     component: () => import("pages/ErrorNotFound.vue"),
