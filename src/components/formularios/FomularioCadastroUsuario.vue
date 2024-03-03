@@ -1,20 +1,25 @@
 <template>
   <q-form @submit="onSubmit" style="max-width: 500px; margin: 0 auto;">
-    <p>Cadastro</p>
-    <q-input label="Usuário:" v-model="login.usuario" lazy-rules :rules="nameRules"/>
-    <q-input label="Senha:" :type="isPwd ? 'password': 'text'" v-model="login.senha" lazy-rules :rules="passwordRules" class="row">
+    <q-input label="Nome Completo:" v-model="form.nome" lazy-rules :rules="nameRules" />
+    <q-input label="E-mail: " v-model="form.email" lazy-rules :rules="emailRules" />
+    <q-input label="Senha:" :type="isPwd ? 'password' : 'text'" v-model="form.senha" lazy-rules :rules="passwordRules"
+      class="row">
       <template v-slot:append>
-        <q-icon :name="isPwd ? 'visibility_off': 'visibility'" class="cursor-pointer " size="sm" @click="isPwd = !isPwd"/>
+        <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer " size="sm"
+          @click="isPwd = !isPwd" />
       </template>
     </q-input>
-    <div class="row justify-between">
-      <div class="row">
-        <p class="q-pr-sm">Não tem uma conta?</p>
-        <p class="style-link" @click="createAccount()">Cadastre-se</p>
-      </div>
-      <p class="style-link" @click="createAccount()">Esqueceu a senha?</p>
-    </div>
-    <q-btn class="full-width" label="Entrar" type="submit" color="orange" />
+    <q-input label="Confirmar Senha:" :type="isPwd ? 'password' : 'text'" v-model="form.confirmar_senha" lazy-rules
+      :rules="passwordRules" class="row">
+
+      <template v-slot:append>
+        <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer " size="sm"
+          @click="isPwd = !isPwd" />
+      </template>
+    </q-input>
+    <q-btn class="full-width" label="Salvar" type="submit" color="primary" />
+
+    <q-btn class="btn-fixed-width q-mt-md" color="primary" label="Voltar para Login" icon="arrow_back" flat @click="backToLogin()" />
   </q-form>
 </template>
 
@@ -27,15 +32,21 @@ import { api } from "src/boot/axios";
 const $q = useQuasar();
 const router = useRouter();
 
-const login = ref({
-  usuario: "",
+const form = ref({
+  nome: "",
+  email: "",
   senha: "",
+  confirmar_senha: ""
 });
 
 const isPwd = ref(true)
 
 const nameRules = [
-  (user) => (user && user.length > 0) || "Você precisa preencher os campos em vermelho",
+  (name) => (name && name.length > 0) || "Você precisa preencher os campos em vermelho",
+];
+
+const emailRules = [
+  (email) => (email && email.length > 0) || "Você precisa preencher os campos em vermelho",
 ];
 
 const passwordRules = [
@@ -59,6 +70,10 @@ async function onSubmit() {
       position: "top",
     });
   }
+}
+
+function backToLogin() {
+  router.push("/")
 }
 </script>
 

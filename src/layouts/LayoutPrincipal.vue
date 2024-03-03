@@ -10,7 +10,7 @@
 
         <div class="row items-center">
           <div class="xs-hide q-mt-md">
-            <p>Seja bem-vindo, <strong>{{ user }}</strong></p>
+            <p>Olá <strong>{{ user }}</strong>, seja bem-vindo!</p>
           </div>
           <div>
             <div class="row items-center bg-grey-1 text-primary q-pa-xs q-ml-md cursor-pointer rounded-borders" @click="logout">

@@ -1,6 +1,6 @@
 <template>
   <q-form @submit="onSubmit" style="max-width: 500px; margin: 0 auto;">
-    <q-input label="Usuário:" v-model="login.usuario" lazy-rules :rules="nameRules"/>
+    <q-input label="E-mail:" v-model="login.usuario" lazy-rules :rules="nameRules"/>
     <q-input label="Senha:" :type="isPwd ? 'password': 'text'" v-model="login.senha" lazy-rules :rules="passwordRules" class="row">
       <template v-slot:append>
         <q-icon :name="isPwd ? 'visibility_off': 'visibility'" class="cursor-pointer " size="sm" @click="isPwd = !isPwd"/>
@@ -13,7 +13,7 @@
       </div>
       <p class="style-link" @click="forgetPassword()">Esqueceu a senha?</p>
     </div>
-    <q-btn class="full-width" label="Entrar" type="submit" color="orange" />
+    <q-btn class="full-width" label="Entrar" type="submit" color="primary" />
   </q-form>
 </template>
 
@@ -71,8 +71,8 @@ function forgetPassword() {
 
 <style scoped>
 .style-link {
-  transition: .3s;
-  color: #9c4e05;
+  transition: .5s;
+  color: #1963d2;
 }
 
 .style-link:hover {

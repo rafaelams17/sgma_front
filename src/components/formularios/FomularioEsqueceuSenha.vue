@@ -1,20 +1,24 @@
 <template>
   <q-form @submit="onSubmit" style="max-width: 500px; margin: 0 auto;">
-    <p>Esqueceu a senha</p>
-    <q-input label="Usuário:" v-model="login.usuario" lazy-rules :rules="nameRules"/>
-    <q-input label="Senha:" :type="isPwd ? 'password': 'text'" v-model="login.senha" lazy-rules :rules="passwordRules" class="row">
-      <template v-slot:append>
-        <q-icon :name="isPwd ? 'visibility_off': 'visibility'" class="cursor-pointer " size="sm" @click="isPwd = !isPwd"/>
-      </template>
-    </q-input>
-    <div class="row justify-between">
-      <div class="row">
-        <p class="q-pr-sm">Não tem uma conta?</p>
-        <p class="style-link" @click="createAccount()">Cadastre-se</p>
-      </div>
-      <p class="style-link" @click="createAccount()">Esqueceu a senha?</p>
+    <q-input label="Email:" v-model="form.email" lazy-rules :rules="nameRules" />
+    <div v-if="showPassword">
+      <q-input label="Senha:" :type="isPwd ? 'password' : 'text'" v-model="form.senha" lazy-rules :rules="passwordRules"
+        class="row">
+        <template v-slot:append>
+          <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer " size="sm"
+            @click="isPwd = !isPwd" />
+        </template>
+      </q-input>
+      <q-input label="Confirmar Senha:" :type="isPwd ? 'password' : 'text'" v-model="form.confirmar_senha" lazy-rules
+        :rules="passwordRules" class="row">
+        <template v-slot:append>
+          <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer " size="sm"
+            @click="isPwd = !isPwd" />
+        </template>
+      </q-input>
     </div>
-    <q-btn class="full-width" label="Entrar" type="submit" color="orange" />
+    <q-btn class="full-width" label="Recuperar senha" type="submit" color="primary" />
+    <q-btn class="btn-fixed-width q-mt-md" color="primary" label="Voltar para Login" icon="arrow_back" flat @click="backToLogin()" />
   </q-form>
 </template>
 
@@ -27,9 +31,12 @@ import { api } from "src/boot/axios";
 const $q = useQuasar();
 const router = useRouter();
 
-const login = ref({
-  usuario: "",
+const showPassword = false;
+
+const form = ref({
+  email: "",
   senha: "",
+  confirmar_senha: "",
 });
 
 const isPwd = ref(true)
@@ -60,17 +67,12 @@ async function onSubmit() {
     });
   }
 }
+
+function backToLogin() {
+  router.push("/")
+}
 </script>
 
 <style scoped>
-.style-link {
-  transition: .3s;
-  color: #9c4e05;
-}
 
-.style-link:hover {
-  text-decoration: underline;
-  cursor: pointer;
-  opacity: 0.8;
-}
 </style>

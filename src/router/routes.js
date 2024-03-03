@@ -49,6 +49,10 @@ const routes = [
         path: "/editar-modulo/:id",
         component: () => import("pages/modulos/EditarModulos.vue"),
       },
+      {
+        path: "/modulos",
+        component: () => import("pages/modulos/ModuloView.vue"),
+      },
     ],
   },
   {
